@@ -9,10 +9,6 @@ from skimage.transform import resize
 from PIL import Image, ImageDraw, ImageFont
 import streamlit_drawable_canvas as stc
 
-# Test if libraries are working by printing version or info
-st.write("TensorFlow version:", tf.__version__)
-st.write("OpenCV version:", cv2.__version__)
-
 
 # Daftar huruf Korea sesuai model
 hangeul_chars = ["Yu", "ae", "b", "bb", "ch", "d", "e", "eo", "eu", "g", "gg", "h", "i", "j", "k",
