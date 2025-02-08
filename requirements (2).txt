@@ -1,9 +1,6 @@
-numpy==1.26.4
-pandas== 2.2.2
+numpy==1.24.6
+pandas==2.2.2
 streamlit
-pickle
-streamlit
-numpy
 tensorflow
 opencv-python
 scikit-image
