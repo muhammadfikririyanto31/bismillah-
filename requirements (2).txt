@@ -1,7 +1,7 @@
 streamlit==1.37.1
 streamlit-drawable-canvas==0.9.3
 tensorflow
-opencv-python-headless
+opencv-python-headless 
 scikit-image
 Pillow
 numpy
