@@ -1,6 +1,5 @@
 import streamlit as st
 import numpy as np
-import tensorflow as tf
 import cv2
 from skimage.morphology import skeletonize
 from skimage.feature import hog
