@@ -1,13 +1,13 @@
 import streamlit as st
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont
 import tensorflow as tf
-from tensorflow.keras.preprocessing.image import img_to_array
+import cv2
 from skimage.morphology import skeletonize
 from skimage.feature import hog
 from skimage import color, exposure
 from skimage.transform import resize
-import cv2  # For image processing (CLAHE, adaptive thresholding)
+from PIL import Image, ImageDraw, ImageFont
+import streamlit_drawable_canvas as stc
 
 # Daftar huruf Korea sesuai model
 hangeul_chars = ["Yu", "ae", "b", "bb", "ch", "d", "e", "eo", "eu", "g", "gg", "h", "i", "j", "k",
@@ -15,10 +15,10 @@ hangeul_chars = ["Yu", "ae", "b", "bb", "ch", "d", "e", "eo", "eu", "g", "gg", "
 
 # Load model dengan caching
 @st.cache_resource
-def load_trained_model():
+def load_model():
     return tf.keras.models.load_model("best_cnn_hog_model9010new.h5", compile=False)
 
-model = load_trained_model()
+model = load_model()
 num_inputs = len(model.input_shape) if isinstance(model.input_shape, list) else 1
 expected_shape = model.input_shape[1:] if num_inputs == 1 else model.input_shape[0][1:]
 
@@ -82,10 +82,9 @@ def generate_hangeul_image(text):
 
 def main():
     st.title("📝 Pengenalan Tulisan Hangeul ")
-    st.write("Ayo Belajar Hangeul tuliskan di canvas!!by: Muhammad Fikri Riyanto")
+    st.write("Ayo Belajar Hangeul tuliskan dicanvas!!by: Muhammad Fikri Riyanto")
     
-    # Canvas untuk menggambar
-    canvas_result = st.canvas(
+    canvas_result = stc.st_canvas(
         fill_color="rgba(255, 255, 255, 0)",
         stroke_width=10,
         stroke_color="#000000",
@@ -121,7 +120,6 @@ def main():
             hangeul_image = generate_hangeul_image(predicted_hangeul)
             st.image(hangeul_image, caption=f"🖌 Huruf Hangeul: {predicted_hangeul}", use_container_width=False)
             
-            # Convert processed image to correct format for displaying
             st.image(processed_image[0], caption="📊 Gambar Input ke Model", use_container_width=True, clamp=True, channels="GRAY")
             st.image(thinning_image, caption="📊 Gambar Setelah Thinning", use_container_width=True, clamp=True, channels="GRAY")
             st.image(hog_visual, caption="📊 Ekstraksi HOG", use_container_width=True, clamp=True, channels="GRAY")
