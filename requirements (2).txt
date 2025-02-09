@@ -5,3 +5,5 @@ opencv-python-headless
 scikit-image
 Pillow
 numpy
+opencv-python==4.5.5.64
+
