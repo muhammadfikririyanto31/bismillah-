@@ -84,6 +84,7 @@ def main():
     st.title("📝 Pengenalan Tulisan Hangeul ")
     st.write("Ayo Belajar Hangeul tuliskan di canvas!!by: Muhammad Fikri Riyanto")
     
+    # Canvas untuk menggambar
     canvas_result = stc.st_canvas(
         fill_color="rgba(255, 255, 255, 0)",
         stroke_width=10,
