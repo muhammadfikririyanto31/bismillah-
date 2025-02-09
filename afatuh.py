@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
-import streamlit_drawable_canvas as stc
 import cv2
 import tensorflow as tf
 from skimage.morphology import skeletonize
