@@ -1,5 +1,5 @@
 streamlit==1.37.1
-streamlit-drawable-canvas==0.1.0  # pastikan ini terinstal
+streamlit-drawable-canvas==0.9.3
 tensorflow
 opencv-python-headless
 scikit-image
