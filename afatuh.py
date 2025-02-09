@@ -1,6 +1,5 @@
 import streamlit as st
 import numpy as np
-from skimage.feature import hog
 from skimage import color, exposure
 from skimage.transform import resize
 from PIL import Image, ImageDraw, ImageFont
