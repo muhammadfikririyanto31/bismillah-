@@ -1,12 +1,13 @@
 import streamlit as st
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
-from tensorflow.keras.preprocessing.image import load_img, img_to_array
-from tensorflow.keras.models import load_model
+import tensorflow as tf
+from tensorflow.keras.preprocessing.image import img_to_array
 from skimage.morphology import skeletonize
 from skimage.feature import hog
 from skimage import color, exposure
 from skimage.transform import resize
+import cv2  # For image processing (CLAHE, adaptive thresholding)
 
 # Daftar huruf Korea sesuai model
 hangeul_chars = ["Yu", "ae", "b", "bb", "ch", "d", "e", "eo", "eu", "g", "gg", "h", "i", "j", "k",
@@ -14,10 +15,10 @@ hangeul_chars = ["Yu", "ae", "b", "bb", "ch", "d", "e", "eo", "eu", "g", "gg", "
 
 # Load model dengan caching
 @st.cache_resource
-def load_model():
+def load_trained_model():
     return tf.keras.models.load_model("best_cnn_hog_model9010new.h5", compile=False)
 
-model = load_model()
+model = load_trained_model()
 num_inputs = len(model.input_shape) if isinstance(model.input_shape, list) else 1
 expected_shape = model.input_shape[1:] if num_inputs == 1 else model.input_shape[0][1:]
 
@@ -84,7 +85,7 @@ def main():
     st.write("Ayo Belajar Hangeul tuliskan di canvas!!by: Muhammad Fikri Riyanto")
     
     # Canvas untuk menggambar
-    canvas_result = stc.st_canvas(
+    canvas_result = st.canvas(
         fill_color="rgba(255, 255, 255, 0)",
         stroke_width=10,
         stroke_color="#000000",
