@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
-import streamlit_drawable_canvas as stc
 
 
 # Daftar huruf Korea sesuai model
