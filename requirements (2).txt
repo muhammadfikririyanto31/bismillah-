@@ -7,4 +7,5 @@ Pillow
 numpy
 opencv-python==4.5.5.64
 opencv-python-headless==4.5.5.64
+python-3.8.13
 
