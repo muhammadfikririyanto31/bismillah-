@@ -1,7 +1,8 @@
 import streamlit as st
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
-import tensorflow as tf
+from tensorflow.keras.preprocessing.image import load_img, img_to_array
+from tensorflow.keras.models import load_model
 from skimage.morphology import skeletonize
 from skimage.feature import hog
 from skimage import color, exposure
